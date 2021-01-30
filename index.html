@@ -41,7 +41,7 @@
     </section>
     <section id="transactions">
       <h2 class="sr-only">Transações</h2>
-      <a href="#" class="button new">+ Nova Transação</a>
+      <a id="btn-new-transaction" href="#" class="button new">+ Nova Transação</a>
       <table id="data-table">
         <thead>
           <tr>
@@ -81,7 +81,7 @@
     </section>
   </main>
 
-  <div class="modal-overlay active">
+  <div class="modal-overlay">
     <div class="modal">
       <div id="form">
         <h2>Nova Transação</h2>
@@ -126,8 +126,8 @@
             >
           </div>
           <div class="input-group actions">
-            <a href="#" class="button cancel">Cancelar</a>
-            <button id="btn-salvar">Salvar</button>
+            <a id="btn-cancel" href="#" class="button cancel">Cancelar</a>
+            <button id="btn-save">Salvar</button>
           </div>
         </form>
       </div>
@@ -137,5 +137,23 @@
   <footer class="container">
     dev.finances$
   </footer>
+  <script>
+    const Modal = {
+      open() {
+        document.querySelector('.modal-overlay').classList.add('active');
+      },
+      close() {
+        document.querySelector('.modal-overlay').classList.remove('active');
+      },
+      save() {
+        alert('Desculpe, nossos desenvolvedores ainda não implementaram essa funcionalidade');
+      }
+    }
+
+    document.querySelector('#btn-new-transaction').addEventListener('click', Modal.open);
+    document.querySelector('#btn-cancel').addEventListener('click', Modal.close);
+    document.querySelector('#btn-save').addEventListener('click', Modal.save);
+
+  </script>
 </body>
 </html>
