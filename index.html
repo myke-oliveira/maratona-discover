@@ -22,21 +22,21 @@
           <span>Entradas</span>
           <img src="./assets/income.svg" alt="Imagem de entradas">
         </h3>
-        <p>R$ 5.000,00</p>
+        <p id="p-income">Loading...</p>
       </div>
       <div class="card">
         <h3>
           <span>Saidas</span>
           <img src="./assets/expense.svg" alt="Imagem de entradas">
         </h3>
-        <p>R$ 3.000,00</p>
+        <p id="p-expense">Loading...</p>
       </div>
       <div class="card total">
         <h3>
           <span>Total</span>
           <img src="./assets/total.svg" alt="Imagem de entradas">
         </h3>
-        <p>R$ 2.000,00</p>
+        <p id="p-total">Loading...</p>
       </div>
     </section>
     <section id="transactions">
@@ -52,30 +52,6 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="description">Luz</td>
-            <td class="expense">- R$ 500,00</td>
-            <td class="date">23/01/2021</td>
-            <td>
-              <img src="./assets/minus.svg" alt="Remover Transação">
-            </td>
-          </tr>
-          <tr>
-            <td class="description">Criação de website</td>
-            <td class="income">R$ 5000,00</td>
-            <td class="date">23/01/2021</td>
-            <td>
-              <img src="./assets/minus.svg" alt="Remover Transação">
-            </td>
-          </tr>
-          <tr>
-            <td class="description">Internet</td>
-            <td class="expense">- R$ 200,00</td>
-            <td class="date">23/01/2021</td>
-            <td>
-              <img src="./assets/minus.svg" alt="Remover Transação">
-            </td>
-          </tr>
         </tbody>
       </table>
     </section>
@@ -87,7 +63,7 @@
     <div class="modal">
       <div id="form">
         <h2>Nova Transação</h2>
-        <form action="">
+        <form id="new-transaction-form" action="">
           <div class="input-group">
             <label
               class="sr-only"
@@ -97,8 +73,11 @@
               type="text"
               id="description"
               name="description"
+              required
               placeholder="Descrição"
+              data-error-element="description-error"
             >
+            <span id="description-error" class="validate-error">Descrição é obrigatório.</span>
           </div>
           <div class="input-group">
             <label
@@ -110,8 +89,11 @@
               step="0.01"
               id="amount"
               name="amount"
+              required
               placeholder="Valor"
+              data-error-element="value-error"
             >
+            <span id="value-error" class="validate-error">Valor é obrigatório.</span>
             <small class="help">
               Use o sintal - (negativo) para despesas e , (virgula) para casas decimais.
             </small>
@@ -125,11 +107,13 @@
               type="date"
               id="date"
               name="date"
+              required
             >
+            <span id="value-error" class="validate-error">Data é obrigatória.</span>
           </div>
           <div class="input-group actions">
             <a id="btn-cancel" href="#" class="button cancel">Cancelar</a>
-            <button id="btn-save">Salvar</button>
+            <button id="btn-save" type="submit" disabled>Salvar</button>
           </div>
         </form>
       </div>
