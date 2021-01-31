@@ -1,7 +1,7 @@
 (function () {
 
   const Utils = {
-    toBRL(amount) {
+    toBRLFormat(amount) {
       return (amount / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     },
     uuid() {
@@ -92,7 +92,7 @@
       this.transactionsContainer.appendChild(tr);
     },
     innerHTMLTransaction({ description, amount, date}) {
-      const formatedAmount = Utils.toBRL(amount);
+      const formatedAmount = Utils.toBRLFormat(amount);
       const CSSClass = amount < 0 ? 'expense' : 'income'
       const html = `
         <td class="description">${description}</td>
@@ -109,9 +109,9 @@
       const $pIncome = document.querySelector('#p-income');
       const $pExpense = document.querySelector('#p-expense');
       const $pTotal = document.querySelector('#p-total');
-      $pIncome.textContent = Utils.toBRL(Transaction.incomes());
-      $pExpense.textContent = Utils.toBRL(Transaction.expenses());
-      $pTotal.textContent = Utils.toBRL(Transaction.total());
+      $pIncome.textContent = Utils.toBRLFormat(Transaction.incomes());
+      $pExpense.textContent = Utils.toBRLFormat(Transaction.expenses());
+      $pTotal.textContent = Utils.toBRLFormat(Transaction.total());
     },
     load() {
       transactions.forEach((transaction, index) => {
@@ -154,5 +154,6 @@
       document.querySelector('#btn-save')
     )
   });
+  document.querySelector('')
 
 })();
