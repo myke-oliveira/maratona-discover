@@ -1,3 +1,8 @@
+---
+title: Maratona Discover
+outpup: pdf_document
+---
+
 # maratona-discover
 
 Rocketseat event: Maratona discover

@@ -104,7 +104,7 @@
             <label
               class="sr-only"
               for="amount"
-            >Descrição</label>
+            >Valor</label>
             <input
               type="number"
               step="0.01"
@@ -113,7 +113,7 @@
               placeholder="Valor"
             >
             <small class="help">
-              Use o sintal - (negativo) para despesas e , (virgula) oara casas decimais.
+              Use o sintal - (negativo) para despesas e , (virgula) para casas decimais.
             </small>
           </div>
           <div class="input-group">
@@ -135,23 +135,6 @@
       </div>
     </div>
   </div>
-  <script>
-    (function () {
-      const Modal = {
-        open() {
-          document.querySelector('.modal-overlay').classList.add('active');
-        },
-        close() {
-          document.querySelector('.modal-overlay').classList.remove('active');
-        },
-        save() {
-          alert('Desculpe, nossos desenvolvedores ainda não implementaram essa funcionalidade');
-        }
-      }
-      document.querySelector('#btn-new-transaction').addEventListener('click', Modal.open);
-      document.querySelector('#btn-cancel').addEventListener('click', Modal.close);
-      document.querySelector('#btn-save').addEventListener('click', Modal.save);
-    })()
-  </script>
+  <script src="./index.js"></script>
 </body>
 </html>
