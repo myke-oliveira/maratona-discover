@@ -55,6 +55,7 @@
       };
 
       transactions.push(transaction);
+      Storage.set(transactions);
       DOM.addTransaction(transaction);
       DOM.updateHeader();
       Modal.close();
@@ -102,7 +103,7 @@
 
   const DOM = {
     transactionsContainer: document.querySelector('#data-table tbody'),
-    addTransaction(transaction, index) {
+    addTransaction(transaction) {
       const tr = document.createElement('tr');
       tr.setAttribute('key', transaction.id);
       tr.innerHTML = this.innerHTMLTransaction(transaction);
@@ -151,29 +152,21 @@
     }
   }
 
-  transactions = [
-    {
-      id: 1,
-      description: "Luz",
-      amount: -50000,
-      date: '23/01/2020'
+  const Storage = {
+    get() {
+      return JSON.parse(localStorage.getItem('dev.finances:transactions')) || [];
     },
-    {
-      id: 2,
-      description: "Criação Website",
-      amount: 400000,
-      date: '23/01/2020'
+    set(transactions) {
+      localStorage.setItem(
+        'dev.finances:transactions',
+        JSON.stringify(transactions)
+      )
     },
-    {
-      id: 3,
-      description: "Internet",
-      amount: -20000,
-      date: '23/01/2020'
-    },
-  ]
+  };
 
   const App = {
     init() {
+      transactions = Storage.get();
       DOM.load();
       document.querySelector('#btn-new-transaction').addEventListener('click', Modal.open);
       document.querySelector('#btn-cancel').addEventListener('click', Modal.close);
@@ -192,11 +185,11 @@
     }
   }
 
-  App.init();
-
   const remove = (transaction_id) => {
     transactions = transactions.filter(transaction => transaction.id != transaction_id);
+    Storage.set(transactions);
   }
 
+  App.init();
 
 })();
